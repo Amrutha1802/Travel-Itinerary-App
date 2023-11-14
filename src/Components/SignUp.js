@@ -32,7 +32,7 @@ const SignupForm = () => {
     try {
       setError("");
       setLoading(true);
-      const response = await signup(values.email, values.password);
+      await signup(values.email, values.password);
       // console.log("Response is ", response);
       addUserToLocalStorage(values.email);
       setError("Account Created Successfully");

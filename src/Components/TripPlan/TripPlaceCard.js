@@ -69,7 +69,7 @@ const TripPlaceCard = ({
                       place.time[0] === timings[0] &&
                       place.time[1] === timings[1]
                   );
-                  // console.log("foundddddd", foundIndex);
+                  // console.log("found", foundIndex);
                   if (foundIndex !== -1) {
                     itinerary.places.splice(foundIndex, 1);
                   }
