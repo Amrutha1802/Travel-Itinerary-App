@@ -76,7 +76,6 @@ function TripPlan({
     getPlanByEmailAndDates,
     setPlans,
   ]);
-
   const handleAccordionChange = (eventKey) => {
     setActiveItem(eventKey);
   };

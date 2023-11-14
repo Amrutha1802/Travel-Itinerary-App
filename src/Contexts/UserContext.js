@@ -109,6 +109,7 @@ export const UserDataProvider = ({ children }) => {
 
     localStorage.setItem("users", JSON.stringify(users));
   };
+
   const getPlansOfUser = (userEmail) => {
     const user = users.find((user) => user.email === userEmail);
     return user ? user.plans : [];

@@ -32,8 +32,8 @@ const BudgetTracker = ({
         tripDates[1],
         budgetOfTrip
       );
-      setBudget(tripBudget);
     }
+    setBudget(tripBudget);
   }, [
     budgetOfTrip,
     flag,
@@ -65,45 +65,32 @@ const BudgetTracker = ({
   ];
   const handleBudgetChange = (e) => {
     const inputValue = e.target.value;
-
     if (inputValue === "" || (inputValue > 0 && !isNaN(inputValue))) {
       setBudget(inputValue === "" ? 0 : parseInt(inputValue, 10));
     }
   };
 
-  const handleBudgetOfTripChange = async (e) => {
-    const inputValue = e.target.value;
-
-    if (inputValue === "" || (!isNaN(inputValue) && isFinite(inputValue))) {
-      await setBudgetOfTrip(parseInt(inputValue, 10));
-      setBudgetOfPlan(
-        user.email,
-        tripState,
-        tripDates[0],
-        tripDates[1],
-        budgetOfTrip
-      );
-    } else {
-      await setBudgetOfTrip(0);
-    }
+  const handleBudgetOfTripChange = (e) => {
+    setBudgetOfTrip(parseInt(e.target.value, 10));
+    setBudgetOfPlan(
+      user.email,
+      tripState,
+      tripDates[0],
+      tripDates[1],
+      budgetOfTrip
+    );
   };
-
   const handleCategoryChange = (e) => {
     setNewExpense({ ...newExpense, category: e.target.value });
   };
 
   const handleAmountChange = (e) => {
-    const inputValue = e.target.value;
+    const inputValue = e.target.value.replace(0, "");
 
     if (inputValue === "" || (!isNaN(inputValue) && isFinite(inputValue))) {
       setNewExpense({
         ...newExpense,
         amount: inputValue === "" ? 0 : parseInt(inputValue, 10),
-      });
-    } else {
-      setNewExpense({
-        ...newExpense,
-        amount: 0,
       });
     }
   };
@@ -201,7 +188,6 @@ const BudgetTracker = ({
               onChange={handleDescriptionChange}
             />
             <br />
-
             <label>Amount (Rupees):</label>
             <input
               type="number"

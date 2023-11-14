@@ -28,9 +28,7 @@ const Login = () => {
     try {
       setError("");
       setLoading(true);
-      // const response =
       await login(values.email, values.password);
-      // console.log("Response is", response);
       checkAndAddUser(values.email);
       navigate("/home");
     } catch {
