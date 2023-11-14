@@ -14,7 +14,7 @@ const fetchStates = async () => {
   const response = await axios.get(`http://localhost:4000/states`);
   return response.data;
 };
-function NavBar() {
+const NavBar = () => {
   const { logout, user } = useAuth();
   const [searchState, setSearchState] = useState("");
   const [searchUnionTerritory, setSearchUnionTerritory] = useState("");
@@ -150,6 +150,6 @@ function NavBar() {
       </Container>
     </Navbar>
   );
-}
+};
 
 export default NavBar;

@@ -6,7 +6,7 @@ import "../StateImageCard/StateImageCard.css";
 import { useUserContext } from "../../Contexts/UserContext.js";
 import { useAuth } from "../../Contexts/AuthContext.js";
 
-function FavoritePlaceCard({ id, images, name, review, description }) {
+const FavoritePlaceCard = ({ id, images, name, review, description }) => {
   const { user } = useAuth();
   const { removeFromFavoritesInLocalStorage } = useUserContext();
   const handleRemoveFromFavorites = () => {
@@ -52,6 +52,6 @@ function FavoritePlaceCard({ id, images, name, review, description }) {
       </Card>
     </Col>
   );
-}
+};
 
 export default FavoritePlaceCard;

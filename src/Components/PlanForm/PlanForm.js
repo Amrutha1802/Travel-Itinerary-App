@@ -7,7 +7,7 @@ import DateSelector from "../DateSelector/DateSelector.js";
 import { useNavigate } from "react-router-dom";
 import "./PlanForm.css";
 
-function PlanForm() {
+const PlanForm = () => {
   const navigate = useNavigate();
   const { selectedState, setSelectedState } = usePlanContext();
   const { setSelectedDates, selectedDates } = useDateContext();
@@ -48,6 +48,6 @@ function PlanForm() {
       </button>
     </div>
   );
-}
+};
 
 export default PlanForm;

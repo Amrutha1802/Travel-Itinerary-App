@@ -9,16 +9,16 @@ import { Link } from "react-router-dom";
 import "./StateTripCard.css";
 import { useTripPlanContext } from "../../Contexts/TripPlanContext.js";
 
-function StateTripCard({ statesData, state, tripDates }) {
+const StateTripCard = ({ statesData, state, tripDates }) => {
   const { user } = useAuth();
   const { setPlanDetails } = useTripPlanContext();
   const { removePlanOfUser } = useUserContext();
   const selectedState = statesData.filter((item) => item.name === state);
 
-  function formatDate(dateString) {
+  const formatDate = (dateString) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
-  }
+  };
 
   const handleRemovePlan = async () => {
     setPlanDetails((prevPlanDetails) =>
@@ -74,6 +74,6 @@ function StateTripCard({ statesData, state, tripDates }) {
       </Card>
     </div>
   );
-}
+};
 
 export default StateTripCard;
