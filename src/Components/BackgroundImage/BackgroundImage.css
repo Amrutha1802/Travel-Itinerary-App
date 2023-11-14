@@ -1,0 +1,61 @@
+.my-container {
+  margin: 0 80px;
+}
+.bg-image-container {
+  width: 100%;
+  border: 2px solid;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.image-with-text-container {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  margin: 0 auto;
+}
+
+.responsive-image {
+  width: 100%;
+  height: 100%;
+  opacity: 10;
+  transition: opacity 3000ms 500ms;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+
+.overlay-text {
+  color: #fff;
+  font-size: 4vw;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .overlay-text {
+    font-size: 6vw;
+  }
+  .image-with-text-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 769px) and (max-width: 1007px) {
+  .overlay-text {
+    font-size: 6vw;
+  }
+  .image-with-text-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
+  }
+}

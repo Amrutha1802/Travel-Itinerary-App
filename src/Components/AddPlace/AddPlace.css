@@ -1,0 +1,69 @@
+.place-img {
+  width: 100px;
+  height: 100px;
+}
+.add-place-body {
+  width: 500px;
+}
+.add-place-card {
+  width: 100%;
+}
+.itinerary-place-container {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  border: 2px solid;
+}
+.place-card-container {
+  width: 40%;
+}
+.place-image-container {
+  width: 60%;
+}
+.place-details {
+  width: 50%;
+  border: 2px solid;
+  margin-right: 30px;
+  padding: 40px;
+}
+.place-name {
+  color: black;
+  font-family: Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}
+.place-description {
+  text-align: left;
+}
+.place-img {
+  width: 100%;
+}
+.place-card-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.place-img {
+  width: 50%;
+}
+.card-details {
+  width: 70%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.time-picker {
+  margin-top: 20px;
+}
+.add-btn {
+  margin-bottom: 15px;
+}
+.time-picker {
+  display: flex;
+  flex-direction: row;
+}
