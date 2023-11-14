@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import NavBar from "../NavBar/NavBar.js";
+import NavBar from "../../Components/NavBar/NavBar.js";
 import { useAuth } from "../../Contexts/AuthContext.js";
-import { useUserContext } from "../../Contexts/UserContext";
+import { useUserContext } from "../../Contexts/UserContext.js";
 import { useTripPlanContext } from "../../Contexts/TripPlanContext.js";
 import axios from "axios";
 import { useQuery } from "react-query";
-import StateTripCard from "../StateTripCard/StateTripCard.js";
+import StateTripCard from "../../Components/StateTripCard/StateTripCard.js";
 import { Row } from "react-bootstrap";
 
 const fetchStates = async () => {

@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import StatePlan from "./Components/State-Plan/StatePlan.js";
 import TouristPlaces from "./Components/TouristPlaces/TouristPlaces.js";
 import Favorites from "./Components/Favorites/Favorites.js";
-import PlansPage from "./Components/Plans/PlansPage";
+import PlansPage from "./pages/Plans/PlansPage.js";
 import PlanNewTrip from "./Components/PlanNewTrip/PlanNewTrip.js";
 import { UserDataProvider } from "./Contexts/UserContext";
 import { PlanDataProvider } from "./Contexts/PlanContext";
@@ -67,7 +67,9 @@ function App() {
                         path="/plans"
                         element={
                           <ProtectedRoute>
-                            <PlansPage />
+                            <TripPlanDataProvider>
+                              <PlansPage />
+                            </TripPlanDataProvider>
                           </ProtectedRoute>
                         }
                       ></Route>
