@@ -18,26 +18,26 @@ export function AuthProvider({ children }) {
     const savedUser = localStorage.getItem("user");
     return savedUser ? JSON.parse(savedUser) : null;
   });
-  function saveUserToLocalStorage(userData) {
+  const saveUserToLocalStorage = (userData) => {
     localStorage.setItem("user", JSON.stringify(userData));
-  }
+  };
 
-  function removeUserFromLocalStorage() {
+  const removeUserFromLocalStorage = () => {
     localStorage.removeItem("user");
-  }
-  function signup(email, password) {
+  };
+  const signup = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
-  }
-  function login(email, password) {
+  };
+  const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
-  }
-  function logout() {
+  };
+  const logout = () => {
     removeUserFromLocalStorage();
     return signOut(auth);
-  }
-  function resetPassword(email) {
+  };
+  const resetPassword = (email) => {
     return sendPasswordResetEmail(auth, email);
-  }
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {

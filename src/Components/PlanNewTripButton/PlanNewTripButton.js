@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import PlanForm from "../PlanForm/PlanForm";
 import "./PlanNewTripButton.css";
-function PlanNewTripButton() {
+const PlanNewTripButton = () => {
   const [showPlanFormComponent, setShowPlanFormComponent] = useState(false);
 
   const handleClick = () => {
@@ -16,6 +16,6 @@ function PlanNewTripButton() {
       {showPlanFormComponent && <PlanForm />}
     </>
   );
-}
+};
 
 export default PlanNewTripButton;

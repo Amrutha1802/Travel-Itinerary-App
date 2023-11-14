@@ -22,14 +22,14 @@ const fetchPlaces = async () => {
   const response = await axios.get(`http://localhost:4000/tourist-places`);
   return response.data;
 };
-function TripPlan({
+const TripPlan = ({
   flag,
   tripState = "No State Selected",
   tripDates = "No Dates Selected",
   tripBudget = "Budget Is Not Set",
   tripExpenses = "Expenses Not Selected",
   tripNotes = "Notes is not Set",
-}) {
+}) => {
   const { selectedState } = usePlanContext();
   const { notes, setNotes, itineraryPlaces, budget, expenses } =
     useItineraryContext();
@@ -76,7 +76,6 @@ function TripPlan({
     getPlanByEmailAndDates,
     setPlans,
   ]);
-
   const handleAccordionChange = (eventKey) => {
     setActiveItem(eventKey);
   };
@@ -391,6 +390,6 @@ function TripPlan({
       )}
     </div>
   );
-}
+};
 
 export default TripPlan;

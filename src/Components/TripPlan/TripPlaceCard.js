@@ -7,14 +7,14 @@ import { useUserContext } from "../../Contexts/UserContext.js";
 import { useAuth } from "../../Contexts/AuthContext.js";
 import "./TripPlan.css";
 
-function TripPlaceCard({
+const TripPlaceCard = ({
   imageUrl,
   placeName,
   date,
   timings,
   tripState,
   tripDates,
-}) {
+}) => {
   const { user } = useAuth();
   const { addTimingsToPlace } = useUserContext();
   const { plans, setPlans } = useTripPlanContext();
@@ -69,7 +69,7 @@ function TripPlaceCard({
                       place.time[0] === timings[0] &&
                       place.time[1] === timings[1]
                   );
-                  console.log("foundddddd", foundIndex);
+                  // console.log("found", foundIndex);
                   if (foundIndex !== -1) {
                     itinerary.places.splice(foundIndex, 1);
                   }
@@ -157,6 +157,6 @@ function TripPlaceCard({
       </Card>
     </div>
   );
-}
+};
 
 export default TripPlaceCard;

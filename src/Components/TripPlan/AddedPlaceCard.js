@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { Space, TimePicker } from "antd";
 import moment from "moment";
-function AddedPlaceCard({ name, imageUrl, timings }) {
+const AddedPlaceCard = ({ name, imageUrl, timings }) => {
   return (
     <div>
       {" "}
@@ -43,6 +43,6 @@ function AddedPlaceCard({ name, imageUrl, timings }) {
       </Card>
     </div>
   );
-}
+};
 
 export default AddedPlaceCard;

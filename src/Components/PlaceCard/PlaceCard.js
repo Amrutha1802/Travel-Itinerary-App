@@ -7,7 +7,7 @@ import "../StateImageCard/StateImageCard.css";
 import { useUserContext } from "../../Contexts/UserContext.js";
 import { useAuth } from "../../Contexts/AuthContext.js";
 
-function PlaceCard({ id, images, name, review, description }) {
+const PlaceCard = ({ id, images, name, review, description }) => {
   const [isAddedToFavorites, setIsAddedToFavorites] = useState(false);
   const { user } = useAuth();
   const { setFavoritesInLocalStorage } = useUserContext();
@@ -59,6 +59,6 @@ function PlaceCard({ id, images, name, review, description }) {
       </Card>
     </Col>
   );
-}
+};
 
 export default PlaceCard;

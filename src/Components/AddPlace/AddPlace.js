@@ -31,7 +31,7 @@ function AddPlace({
   const [updatedUsers, setUpdatedUsers] = useState(
     JSON.parse(localStorage.getItem("users")) || []
   );
-  function addPlaceToUserPlan(
+  const addPlaceToUserPlan = (
     email,
     state,
     tripStartDate,
@@ -40,7 +40,7 @@ function AddPlace({
     name,
     url,
     time
-  ) {
+  ) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const newPlace = { name, url };
     newPlace.time = time;
@@ -75,7 +75,7 @@ function AddPlace({
         return user;
       })
     );
-  }
+  };
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(updatedUsers));
   }, [updatedUsers]);

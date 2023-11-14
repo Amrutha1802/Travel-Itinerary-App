@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-regular-svg-icons";
 import "./TripPlan.css";
 
-function TriptitleCard({
+const TriptitleCard = ({
   flag = "new-plan",
   tripState = "Not Selected",
   selectedState = "Not Selected",
   tripDates = "Not Selected",
   selectedDates = "Not Selected",
-}) {
+}) => {
   return (
     <div>
       <Card className="state-img-card date-btn">
@@ -33,6 +33,6 @@ function TriptitleCard({
       </Card>
     </div>
   );
-}
+};
 
 export default TriptitleCard;

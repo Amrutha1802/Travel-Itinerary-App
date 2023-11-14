@@ -10,7 +10,7 @@ const fetchStates = async () => {
   const response = await axios.get(`http://localhost:4000/states`);
   return response.data;
 };
-function States() {
+const States = () => {
   const {
     data: states,
     isLoading: areStatesLoading,
@@ -77,6 +77,6 @@ function States() {
       </div>
     </div>
   );
-}
+};
 
 export default States;

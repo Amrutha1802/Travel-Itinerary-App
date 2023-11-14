@@ -3,7 +3,7 @@ import { Space, TimePicker as AntdTimePicker } from "antd";
 import { useItineraryContext } from "../../Contexts/ItineraryContext";
 import { useDateContext } from "../../Contexts/DateContext.js";
 import { usePlanContext } from "../../Contexts/PlanContext.js";
-function PlaceTimePicker({ flag, dateInfo, placeName }) {
+const PlaceTimePicker = ({ flag, dateInfo, placeName }) => {
   const { itineraryPlaces, setItineraryPlaces } = useItineraryContext();
   const { setSelectedTime } = usePlanContext();
   const { formatTime } = useDateContext();
@@ -43,6 +43,6 @@ function PlaceTimePicker({ flag, dateInfo, placeName }) {
       />
     </Space>
   );
-}
+};
 
 export default PlaceTimePicker;

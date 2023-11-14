@@ -109,6 +109,7 @@ export const UserDataProvider = ({ children }) => {
 
     localStorage.setItem("users", JSON.stringify(users));
   };
+
   const getPlansOfUser = (userEmail) => {
     const user = users.find((user) => user.email === userEmail);
     return user ? user.plans : [];
@@ -125,7 +126,7 @@ export const UserDataProvider = ({ children }) => {
     localStorage.setItem("users", JSON.stringify(updatedUsers));
   };
 
-  function getPlanByEmailAndDates(email, state, tripStartDate, tripEndDate) {
+  const getPlanByEmailAndDates = (email, state, tripStartDate, tripEndDate) => {
     const users = JSON.parse(localStorage.getItem("users"));
     const user = users.find((user) => user.email === email);
     if (user && user.plans) {
@@ -139,8 +140,8 @@ export const UserDataProvider = ({ children }) => {
       return matchingPlan || null;
     }
     return null;
-  }
-  function setNotesOfPlan(email, notes, state, tripStartDate, tripEndDate) {
+  };
+  const setNotesOfPlan = (email, notes, state, tripStartDate, tripEndDate) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const updatedUsers = users.map((user) => {
       if (user.email === email && user.plans) {
@@ -158,8 +159,8 @@ export const UserDataProvider = ({ children }) => {
     });
 
     localStorage.setItem("users", JSON.stringify(updatedUsers));
-  }
-  function addTimingsToPlace(
+  };
+  const addTimingsToPlace = (
     email,
     state,
     tripStartDate,
@@ -168,7 +169,7 @@ export const UserDataProvider = ({ children }) => {
     date,
     startTime,
     endTime
-  ) {
+  ) => {
     const timings = [startTime, endTime];
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const updatedUsers = users.map((user) => {
@@ -198,15 +199,15 @@ export const UserDataProvider = ({ children }) => {
     });
 
     localStorage.setItem("users", JSON.stringify(updatedUsers));
-  }
+  };
 
-  function addExpenseToPlan(
+  const addExpenseToPlan = (
     email,
     state,
     tripStartDate,
     tripEndDate,
     newExpense
-  ) {
+  ) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const updatedUsers = users.map((user) => {
       if (user.email === email && user.plans) {
@@ -227,8 +228,14 @@ export const UserDataProvider = ({ children }) => {
     });
 
     localStorage.setItem("users", JSON.stringify(updatedUsers));
-  }
-  function setBudgetOfPlan(email, state, tripStartDate, tripEndDate, budget) {
+  };
+  const setBudgetOfPlan = (
+    email,
+    state,
+    tripStartDate,
+    tripEndDate,
+    budget
+  ) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const updatedUsers = users.map((user) => {
       if (user.email === email && user.plans) {
@@ -246,8 +253,8 @@ export const UserDataProvider = ({ children }) => {
     });
 
     localStorage.setItem("users", JSON.stringify(updatedUsers));
-  }
-  function addPlaceToUserPlan(
+  };
+  const addPlaceToUserPlan = (
     email,
     state,
     tripStartDate,
@@ -256,7 +263,7 @@ export const UserDataProvider = ({ children }) => {
     name,
     url,
     time
-  ) {
+  ) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const newPlace = { name, url };
     newPlace.time = time;
@@ -292,32 +299,6 @@ export const UserDataProvider = ({ children }) => {
     });
 
     localStorage.setItem("users", JSON.stringify(updatedUsers));
-  }
-  const fetchItPlaces = (email, state, tripDates, dateInfo) => {
-    const users = JSON.parse(localStorage.getItem("users"));
-    const user = users.find((user) => user.email === email);
-
-    if (user && user.plans) {
-      const matchingPlan = user.plans.find((plan) => {
-        return (
-          plan.state === state &&
-          plan.tripDates[0] === tripDates[0] &&
-          plan.tripDates[1] === tripDates[1]
-        );
-      });
-
-      if (matchingPlan && matchingPlan.itineraryPlaces) {
-        const matchingPlaces = matchingPlan.itineraryPlaces
-          .filter((place) => place.date === dateInfo)
-          .map((place) => place.places);
-
-        if (matchingPlaces.length > 0) {
-          return matchingPlaces;
-        }
-      }
-    }
-
-    return "Places not found";
   };
 
   const removePlanOfUser = (email, stateName, tripDates) => {
@@ -356,7 +337,6 @@ export const UserDataProvider = ({ children }) => {
     addExpenseToPlan,
     setBudgetOfPlan,
     addTimingsToPlace,
-    fetchItPlaces,
     removePlanOfUser,
   };
   return (
