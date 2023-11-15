@@ -6,38 +6,26 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Form, FormControl } from "react-bootstrap";
 import { useAuth } from "../../Contexts/AuthContext.js";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useQuery } from "react-query";
 import "./NavBar.css";
+import useFetchStates from "../../hooks/useFetchStates.js";
 
-const fetchStates = async () => {
-  const response = await axios.get(`http://localhost:4000/states`);
-  return response.data;
-};
 const NavBar = () => {
   const { logout, user } = useAuth();
   const [searchState, setSearchState] = useState("");
   const [searchUnionTerritory, setSearchUnionTerritory] = useState("");
-  const {
-    data: states,
-    isLoading: areStatesLoading,
-    isError,
-  } = useQuery(["states"], () => fetchStates());
+  const { areStatesLoading, isError, statesData, territoriesData } =
+    useFetchStates();
   if (areStatesLoading) {
     return <div>Loading...</div>;
   }
   if (isError) {
     return <div>Error loading data</div>;
   }
-  const statesData = states.filter((state) => state.type === "state");
-  const unionTerritoriesData = states.filter(
-    (territory) => territory.type === "territory"
-  );
 
-  const filteredStatesData = statesData.filter((item) =>
+  const filteredStatesData = statesData?.filter((item) =>
     item.name.toLowerCase().includes(searchState.toLowerCase())
   );
-  const filteredUnionTerritoriesData = unionTerritoriesData.filter((item) =>
+  const filteredUnionTerritoriesData = territoriesData?.filter((item) =>
     item.name.toLowerCase().includes(searchUnionTerritory.toLowerCase())
   );
   const handleLogout = async () => {
@@ -75,7 +63,7 @@ const NavBar = () => {
                   />
                 </Form>
                 <NavDropdown.Divider />
-                {filteredStatesData.map((state) => (
+                {filteredStatesData?.map((state) => (
                   <NavDropdown.Item key={state.id}>
                     <Link
                       className="link"
@@ -105,7 +93,7 @@ const NavBar = () => {
                   />
                 </Form>
                 <NavDropdown.Divider />
-                {filteredUnionTerritoriesData.map((territory) => (
+                {filteredUnionTerritoriesData?.map((territory) => (
                   <NavDropdown.Item key={territory.id}>
                     <Link
                       className="link"

@@ -1,0 +1,31 @@
+.budget-heading {
+  font-weight: 700 !important;
+  letter-spacing: -0.03em;
+  font-family: Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  margin-right: 5px;
+  font-size: large;
+}
+.expense-btn {
+  margin-bottom: 20px;
+}
+.category-dropdown {
+  margin-bottom: 20px;
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: none;
+}
+.expense-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-right: 40px;
+}
+
+.cardStyle {
+  background-color: "#ffcccb";
+}
+.add-btn {
+  margin-left: 10px;
+}

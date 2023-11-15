@@ -1,28 +1,30 @@
 import "./App.css";
-import Main from "./Components/Main.js";
-import SignupForm from "./Components/SignUp.js";
+import Main from "./Pages/MainPage/Main.js";
+import SignupForm from "./Pages/SignUp.js";
 import { Routes, Route } from "react-router-dom";
-import Home from "./Components/Home/Home.js";
+import Home from "./Pages/Home/Home.js";
 import { AuthProvider } from "./Contexts/AuthContext.js";
 import ProtectedRoute from "./Components/ProtectedRoute.js";
-import ForgotPassword from "./Components/ForgotPassword.js";
+import ForgotPassword from "./Pages/ForgotPassword.js";
 import { QueryClientProvider } from "react-query";
 import { QueryClient } from "react-query";
 import "bootstrap/dist/css/bootstrap.min.css";
-import StatePlan from "./Components/State-Plan/StatePlan.js";
-import TouristPlaces from "./Components/TouristPlaces/TouristPlaces.js";
-import Favorites from "./Components/Favorites/Favorites.js";
-import PlansPage from "./Components/Plans/PlansPage";
-import PlanNewTrip from "./Components/PlanNewTrip/PlanNewTrip.js";
+import StatePlan from "./Pages/State-Plan/StatePlan.js";
+import TouristPlaces from "./Pages/TouristPlaces/TouristPlaces.js";
+import Favorites from "./Pages/Favorites/Favorites.js";
+import PlansPage from "./Pages/Plans/PlansPage.js";
+import PlanNewTrip from "./Pages/PlanNewTrip/PlanNewTrip.js";
 import { UserDataProvider } from "./Contexts/UserContext";
 import { PlanDataProvider } from "./Contexts/PlanContext";
 import { DateContextProvider } from "./Contexts/DateContext";
 import { ItineraryDataProvider } from "./Contexts/ItineraryContext";
 import { TripPlanDataProvider } from "./Contexts/TripPlanContext.js";
-
+import NavBar from "./Components/NavBar/NavBar.js";
+import { useLocation } from "react-router-dom";
 const queryClient = new QueryClient();
 function App() {
-  //
+  const location = useLocation();
+  const isMainPage = location.pathname === "/";
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
@@ -31,6 +33,7 @@ function App() {
             <DateContextProvider>
               <ItineraryDataProvider>
                 <TripPlanDataProvider>
+                  {!isMainPage && <NavBar />}
                   <div className="App">
                     <Routes>
                       <Route exact path="/" element={<Main />}></Route>

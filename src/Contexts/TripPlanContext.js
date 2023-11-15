@@ -5,7 +5,7 @@ export const useTripPlanContext = () => {
   return useContext(TripPlanContext);
 };
 export const TripPlanDataProvider = ({ children }) => {
-  const [plans, setPlans] = useState();
+  const [plans, setPlans] = useState([]);
   const [planDetails, setPlanDetails] = useState([]);
   const contextValue = {
     plans,
