@@ -14,17 +14,10 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem("user");
-    return savedUser ? JSON.parse(savedUser) : null;
-  });
-  const saveUserToLocalStorage = (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData));
-  };
+  // const [isAuthloading, setIsAuthLoading] = useState(true);
 
-  const removeUserFromLocalStorage = () => {
-    localStorage.removeItem("user");
-  };
+  const [user, setUser] = useState(null);
+
   const signup = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
@@ -32,25 +25,19 @@ export function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   };
   const logout = () => {
-    removeUserFromLocalStorage();
     return signOut(auth);
   };
   const resetPassword = (email) => {
     return sendPasswordResetEmail(auth, email);
   };
   useEffect(() => {
+    // setIsAuthLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-        saveUserToLocalStorage(currentUser);
-      } else {
-        setUser(null);
-        removeUserFromLocalStorage();
-      }
+      // console.log("user onAuthState changed", currentUser);
+      setUser(currentUser);
+      // setIsAuthLoading(false);
     });
-    return () => {
-      unsubscribe();
-    };
+    return () => unsubscribe();
   }, []);
 
   const value = {
