@@ -30,18 +30,6 @@ const useFetchStates = () => {
         : [],
     [states, areStatesLoading]
   );
-  console.log("territories", territoriesData);
-  if (areStatesLoading) {
-    return <p>Loading states...</p>;
-  }
-
-  if (isError) {
-    return (
-      <div>
-        <p>Error fetching states: {error.message}</p>
-      </div>
-    );
-  }
 
   return {
     states,
